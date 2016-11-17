@@ -5,6 +5,7 @@ const morphdom = require('morphdom')
 const reducer = require('./reducer')
 const Theories = require('./views/Theories')
 
+
 const main = document.querySelector('main')
 const app = document.createElement('div')
 main.appendChild(app)
