@@ -27,7 +27,7 @@ test("Test that reducer can increment votes", function(t){
   }
   freeze(state)
   // act
-  const actual = reducer(state, {type: 'increment', payload: 1})
+  const actual = reducer(state, {type: 'INCREMENT_VOTES', payload: 1})
   // assert
   t.deepEquals(actual, expectedState, 'the reducer increments correctly')
   t.end()
@@ -52,7 +52,7 @@ test("Test that reducer can decrement votes", function(t){
   }
   freeze(state)
   // act
-  const actual = reducer(state, {type: 'decrement', payload: 1})
+  const actual = reducer(state, {type: 'DECREMENT_VOTES', payload: 1})
   // assert
   t.deepEquals(actual, expectedState, 'the reducer decrements correctly')
   t.end()

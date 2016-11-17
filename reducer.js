@@ -5,7 +5,12 @@ module.exports = function reducer (state, action) {
   switch (action.type) {
     case 'INIT':
       return newState
+    case 'INCREMENT_VOTES':
+      newState.conspiracies[action.payload].votes++
+      return newState
+    case 'DECREMENT_VOTES':
+      newState.conspiracies[action.payload].votes--
+      return newState
   }
   return newState
 }
-
