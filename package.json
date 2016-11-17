@@ -35,6 +35,8 @@
     "clone": "^2.0.0",
     "deep-freeze": "0.0.1",
     "gh-pages": "^0.11.0",
+    "hyperscript": "^2.0.2",
+    "morphdom": "^2.2.0",
     "redux": "^3.6.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1",
