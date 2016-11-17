@@ -11,6 +11,11 @@ module.exports = function reducer (state, action) {
     case 'DECREMENT_VOTES':
       newState.conspiracies[action.payload].votes--
       return newState
+      case 'ADD_THEORY':
+        if (action.payload) {
+          newState.conspiracies.push({id: newState.conspiracies.length+1, description: action.payload.description, votes: 0, author: action.payload.author})
+        }
+        return newState
   }
   return newState
 }
