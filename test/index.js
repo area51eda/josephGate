@@ -80,7 +80,7 @@ test("Test that reducer can add new conspiracy", function(t){
   // act
   const actual = reducer(state, {type: 'ADD_CONSPIRACY', payload: {description: 'joseph can swim through land', author: 'mick'}})
   // assert
-  t.deepEquals(actual, expectedState, 'the reducer decrements correctly')
+  t.deepEquals(actual, expectedState, 'the reducer can add new conspiraciy')
   t.end()
 })
 

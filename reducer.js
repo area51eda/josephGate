@@ -19,7 +19,8 @@ module.exports = function reducer (state, action) {
       return newState
     case 'ADD_CONSPIRACY':
       if (payload) {
-        conspiracies.push({id: conspiracies.length+1, description: payload.description, votes: 0, author: payload.author})
+        var ID = conspiracies[conspiracies.length-1].id + 1
+        conspiracies.push({id: ID, description: payload.description, votes: 0, author: payload.author})
       }
       return newState
     case 'DELETE_CONSPIRACY':
