@@ -12,8 +12,8 @@ main.appendChild(app)
 const initialState = {
   conspiracies: [
     {id: 1, description: 'joseph is a robot', votes: 0, author: 'mick'},
-    {id: 2, description: 'joseph has 11 toes', votes: 0, author: 'mick'},
-    {id: 3, description: 'joseph can play the flute', votes: 0, author: 'mick'}
+    {id: 2, description: 'joseph has 11 toes', votes: 0, author: 'jim'},
+    {id: 3, description: 'joseph can play the flute', votes: 0, author: 'jack'}
   ]
 }
 
