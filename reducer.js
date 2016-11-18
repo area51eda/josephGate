@@ -25,7 +25,7 @@ module.exports = function reducer (state, action) {
       return newState
     case 'DELETE_CONSPIRACY':
       newState.conspiracies = conspiracies.filter((conspiracy) => {
-        return conspiracy.id !== payload
+        return conspiracy.id !== payloadgi
       })
       return newState
     case 'EDIT_CONSPIRACY':
