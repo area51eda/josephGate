@@ -2,20 +2,31 @@ var clone = require('clone')
 
 module.exports = function reducer (state, action) {
   var newState = clone(state)
-  switch (action.type) {
+  var {conspiracies} = newState
+  var {type, payload} = action
+  switch (type) {
     case 'INIT':
       return newState
     case 'INCREMENT_VOTES':
-      newState.conspiracies[action.payload].votes++
+      conspiracies.forEach((conspiracy) => {
+        if (conspiracy.id === payload) conspiracies[payload].votes++
+      })
       return newState
     case 'DECREMENT_VOTES':
-      newState.conspiracies[action.payload].votes--
+      conspiracies.forEach((conspiracy) => {
+        if (conspiracy.id === payload) conspiracies[payload].votes--
+      })
       return newState
-      case 'ADD_THEORY':
-        if (action.payload) {
-          newState.conspiracies.push({id: newState.conspiracies.length+1, description: action.payload.description, votes: 0, author: action.payload.author})
-        }
-        return newState
+    case 'ADD_CONSPIRACY':
+      if (payload) {
+        conspiracies.push({id: conspiracies.length+1, description: payload.description, votes: 0, author: payload.author})
+      }
+      return newState
+    case 'DELETE_CONSPIRACY':
+        newState.conspiracies = conspiracies.filter((conspiracy) => {
+        return conspiracy.id !== payload
+      })
+      return newState
   }
   return newState
 }
