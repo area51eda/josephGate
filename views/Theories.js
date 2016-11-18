@@ -1,11 +1,18 @@
 var h = require('hyperscript')
 
-module.exports = ({products}, dispatch) => {
-  return h('div#products', {}, products.map((product, index) => {
-    return [
-      h('p', {className: 'name'}, product.name),
-      h('p', "Price: ", product.price)
-    ]
-
+module.exports = (conspiracies, dispatch) => {
+  console.log(conspiracies)
+  return h('div#yo', {}, conspiracies.map((conspiracy, index) => {
+    return showConspiracy(conspiracy, dispatch)
   }))
+}
+
+function showConspiracy (conspiracy, dispatch) {
+  return h('div', {},
+    h('h2', {}, conspiracy.author),
+    h('p', {}, conspiracy.description),
+    h('button.upVote', {}, {onclick: () => dispatch({type: 'INCREMENT_VOTES', payload: conspiracy.id})}, '+'),
+    h('button.downVote', {}, {onclick: () => dispatch({type: 'DECREMENT_VOTES', payload: conspiracy.id})}, '-'),
+    h('p', {}, 'score: ' + JSON.stringify(conspiracy.votes))
+  )
 }
