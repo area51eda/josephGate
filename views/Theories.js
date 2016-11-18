@@ -1,7 +1,7 @@
 var h = require('hyperscript')
 
 module.exports = (conspiracies, dispatch) => {
-  console.log(conspiracies)
+  console.log({conspiracies})
   return h('div#yo', {}, conspiracies.map((conspiracy, index) => {
     return showConspiracy(conspiracy, dispatch)
   }))
