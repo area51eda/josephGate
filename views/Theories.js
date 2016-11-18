@@ -13,6 +13,7 @@ function showConspiracy (conspiracy, dispatch) {
     h('p', {}, `-  ${conspiracy.author}`),
     h('button.upVote', {}, {onclick: () => dispatch({type: 'INCREMENT_VOTES', payload: conspiracy.id})}, '+'),
     h('button.downVote', {}, {onclick: () => dispatch({type: 'DECREMENT_VOTES', payload: conspiracy.id})}, '-'),
-    h('p', {}, `score: ${conspiracy.votes}`)
+    h('p', {}, `score: ${conspiracy.votes}`),
+    h('button.delete', {}, {onclick: () => dispatch({type: 'DELETE_CONSPIRACY', payload: conspiracy.id})}, 'Bull$h*t!!')
   )
 }
