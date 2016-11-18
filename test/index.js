@@ -109,3 +109,30 @@ test("Test that reducer can delete a conspiracy", function(t){
   t.deepEquals(actual, expectedState, 'the reducer deletes correctly')
   t.end()
 })
+
+test("Test that reducer can edit a conspiracy", function(t){
+  // arrange
+  const state = {
+    conspiracies: [
+      {id: 1, description: 'joseph is a robot', votes: 0, author: 'mick'},
+      {id: 2, description: 'joseph has 11 toes', votes: 0, author: 'mick'},
+      {id: 3, description: 'joseph can play the flute', votes: 0, author: 'mick'},
+      {id: 4, description: 'joseph can swim through land', votes: 0, author: 'mick'}
+    ]
+  }
+
+  const expectedState = {
+    conspiracies: [
+      {id: 1, description: 'joseph is a robot', votes: 0, author: 'mick'},
+      {id: 2, description: 'joseph has 11 toes', votes: 0, author: 'mick'},
+      {id: 3, description: 'joseph can play the flute', votes: 0, author: 'mick'},
+      {id: 4, description: 'joseph once fought a tiger', votes: 0, author: 'mick'}
+    ]
+  }
+  freeze(state)
+  // act
+  const actual = reducer(state, {type: 'EDIT_CONSPIRACY', payload: {id: 4, description: 'joseph once fought a tiger'}})
+  // assert
+  t.deepEquals(actual, expectedState, 'the reducer edits correctly')
+  t.end()
+})

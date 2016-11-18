@@ -23,8 +23,13 @@ module.exports = function reducer (state, action) {
       }
       return newState
     case 'DELETE_CONSPIRACY':
-        newState.conspiracies = conspiracies.filter((conspiracy) => {
+      newState.conspiracies = conspiracies.filter((conspiracy) => {
         return conspiracy.id !== payload
+      })
+      return newState
+    case 'EDIT_CONSPIRACY':
+      conspiracies.forEach((conspiracy) => {
+        if (conspiracy.id === payload.id) conspiracy.description = payload.description
       })
       return newState
   }
