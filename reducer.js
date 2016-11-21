@@ -8,33 +8,38 @@ module.exports = function reducer (state, action) {
     case 'INIT':
       return newState
     case 'INCREMENT_VOTES':
-      conspiracies.forEach((conspiracy, index) => {
-        if (conspiracy.id === payload) conspiracies[index].votes++
-      })
+      conspiracies[payload].votes ++
+      // conspiracies.forEach((conspiracy, index) => {
+      //   if (conspiracy.id === payload) conspiracies[index].votes++
+      // })
       return newState
     case 'DECREMENT_VOTES':
-      conspiracies.forEach((conspiracy, index) => {
-        if (conspiracy.id === payload) conspiracies[index].votes--
-      })
+      conspiracies[payload].votes --
+      // conspiracies.forEach((conspiracy, index) => {
+      //   if (conspiracy.id === payload) conspiracies[index].votes--
+      // })
       return newState
     case 'ADD_CONSPIRACY':
-      if (payload) {
+      if (payload.description) {
         var ID = 1
         if(conspiracies.length > 0) ID = conspiracies[conspiracies.length - 1].id + 1
         conspiracies.push({id: ID, description: payload.description, votes: 0, author: payload.author})
       }
       return newState
     case 'DELETE_CONSPIRACY':
-      console.log("deleting conspiracy of id: ", payload)
-      newState.conspiracies = conspiracies.filter((conspiracy) => {
-        return conspiracy.id !== payload
-      })
+      console.log("deleting conspiracy of position: ", payload)
+      newState.conspiracies.splice(payload, 1)
+      // newState.conspiracies = conspiracies.filter((conspiracy) => {
+      //   return conspiracy.id !== payload
+      // })
       return newState
     case 'EDIT_CONSPIRACY':
       conspiracies.forEach((conspiracy) => {
         if (conspiracy.id === payload.id) conspiracy.description = payload.description
       })
       return newState
+    case 'CLEAR_ALL':
+      newState.conspiracies = []
   }
   return newState
 }

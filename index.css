@@ -1,9 +1,40 @@
 #app {
   display: flex;
+  margin: 0 20px;
 }
 #app > div {
   flex-grow: 1;
 }
 .product{
   margin-bottom: 20px;
+}
+
+.theories {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.theory {
+  border: solid 0.5px black;
+  margin: 20px;
+  padding: 10px;
+  width: 200px;
+}
+
+* {
+  font-family: 'Helvetica Neue';
+  font-weight: 300;
+}
+
+body {
+  margin: 0;
+}
+
+
+h1 {
+  text-align: center;
+  background-color: #ff9100;
+  margin: 0;
+  padding: 20px 0;
+  color: white;
 }

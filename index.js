@@ -1,6 +1,6 @@
 const redux = require('redux')
-const h = require('hyperscript')
 const morphdom = require('morphdom')
+const html = require('yo-yo')
 
 const reducer = require('./reducer')
 const Theories = require('./views/Theories')
@@ -29,11 +29,12 @@ const dispatch = store.dispatch
 
 function render () {
   const state = store.getState()
-  const newView = h('div#app', {}, [
-    Theories(state.conspiracies, dispatch),
-    AddTheories(dispatch)
-  ])
-  console.log(JSON.stringify(store.getState()))
+  const newView = html`
+    <div id='app'>
+      ${Theories(state.conspiracies, dispatch)}
+      ${AddTheories(dispatch)}
+    </div>
+  `
   morphdom(app, newView)
 }
 
