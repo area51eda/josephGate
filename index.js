@@ -4,6 +4,7 @@ const morphdom = require('morphdom')
 
 const reducer = require('./reducer')
 const Theories = require('./views/Theories')
+const AddTheories = require('./views/AddTheories.js')
 
 const main = document.querySelector('main')
 const app = document.createElement('div')
@@ -29,8 +30,10 @@ const dispatch = store.dispatch
 function render () {
   const state = store.getState()
   const newView = h('div#app', {}, [
-    Theories(state.conspiracies, dispatch)
+    Theories(state.conspiracies, dispatch),
+    AddTheories(dispatch)
   ])
+  console.log(JSON.stringify(store.getState()))
   morphdom(app, newView)
 }
 

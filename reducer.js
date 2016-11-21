@@ -19,11 +19,13 @@ module.exports = function reducer (state, action) {
       return newState
     case 'ADD_CONSPIRACY':
       if (payload) {
-        var ID = conspiracies[conspiracies.length - 1].id + 1
+        var ID = 1
+        if(conspiracies.length > 0) ID = conspiracies[conspiracies.length - 1].id + 1
         conspiracies.push({id: ID, description: payload.description, votes: 0, author: payload.author})
       }
       return newState
     case 'DELETE_CONSPIRACY':
+      console.log("deleting conspiracy of id: ", payload)
       newState.conspiracies = conspiracies.filter((conspiracy) => {
         return conspiracy.id !== payload
       })
