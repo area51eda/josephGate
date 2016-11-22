@@ -13,6 +13,10 @@ module.exports = function reducer (state, action) {
       })
       return newState
     case 'DECREMENT_VOTES':
+      // find the target conspiracy to DECREMEN
+      // decrement it
+
+      
       conspiracies.forEach((conspiracy, index) => {
         if (conspiracy.id === payload) conspiracies[index].votes--
       })
@@ -24,6 +28,7 @@ module.exports = function reducer (state, action) {
       }
       return newState
     case 'DELETE_CONSPIRACY':
+      console.log("deleting id: ", payload)
       newState.conspiracies = conspiracies.filter((conspiracy) => {
         return conspiracy.id !== payload
       })
