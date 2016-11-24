@@ -32,13 +32,19 @@ const dispatch = store.dispatch
 
 const App = (props) =>
   <div id='app'>
-    <Conspiracies conspiracy={props.state.conspiracies[0]} dispatch={props.dispatch}/>
+    <Conspiracies conspiracy={props.state.conspiracies[0]} dispatch={props.dispatch} increment={props.increment}/>
   </div>
   // <h1>Hello {props.name}</h1>
 
+  const dispatchIncrement = () => dispatch({type: 'INCREMENT_VOTES', payload: 0})
+
 store.subscribe(() => {
   const state = store.getState()
-  renderReact(<App name="Michael" state={state} dispatch={dispatch}/>, app)
+  renderReact(<App
+      state={state}
+      dispatch={dispatch}
+      increment={dispatchIncrement}
+      />, app)
 })
 
 
