@@ -28,19 +28,19 @@ const initialState = {
 
 let store = redux.createStore(reducer, initialState)
 
+const dispatch = store.dispatch
+
 const App = (props) =>
   <div id='app'>
-    <h1>Hello {props.name}</h1>
-    <Conspiracies conspiracy={props.state.conspiracies[0]}/>
+    <Conspiracies conspiracy={props.state.conspiracies[0]} dispatch={props.dispatch}/>
   </div>
   // <h1>Hello {props.name}</h1>
 
 store.subscribe(() => {
   const state = store.getState()
-  renderReact(<App name="Michael" state={state}/>, app)
+  renderReact(<App name="Michael" state={state} dispatch={dispatch}/>, app)
 })
 
-const dispatch = store.dispatch
 
 // function render () {
 //   const state = store.getState()
