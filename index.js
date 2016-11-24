@@ -1,6 +1,9 @@
 const redux = require('redux')
-const morphdom = require('morphdom')
 const html = require('yo-yo')
+
+const React = require('react')
+const ReactDom = require('react-dom')
+const renderReact = ReactDom.render
 
 const reducer = require('./reducer')
 const Theories = require('./views/Theories')
@@ -23,19 +26,33 @@ const initialState = {
 
 let store = redux.createStore(reducer, initialState)
 
-store.subscribe(render)
+const Conspiracies = (props) => {
+  return <div>A conspiracy!</div>
+}
+
+const App = (props) =>
+  <div id='app'>
+    <h1>Hello {props.name}</h1>
+    <Conspiracies/>
+  </div>
+  // <h1>Hello {props.name}</h1>
+
+store.subscribe(() => {
+  const state = store.getState()
+  renderReact(<App name="Michael"/>, app)
+})
 
 const dispatch = store.dispatch
 
-function render () {
-  const state = store.getState()
-  const newView = html`
-    <div id='app'>
-      ${Theories(state.conspiracies, dispatch)}
-      ${AddTheories(dispatch)}
-    </div>
-  `
-  morphdom(app, newView)
-}
+// function render () {
+//   const state = store.getState()
+//   const newView = html`
+//     <div id='app'>
+//       ${Theories(state.conspiracies, dispatch)}
+//       ${AddTheories(dispatch)}
+//     </div>
+//   `
+//   html.update(app, newView)
+// }
 
 store.dispatch({type: 'INIT'})
