@@ -9,6 +9,8 @@ const reducer = require('./reducer')
 const Theories = require('./views/Theories')
 const AddTheories = require('./views/AddTheories.js')
 
+const Conspiracies = require('./reactViews/Conspiracies')
+
 const main = document.querySelector('main')
 const app = document.createElement('div')
 main.appendChild(app)
@@ -26,9 +28,6 @@ const initialState = {
 
 let store = redux.createStore(reducer, initialState)
 
-const Conspiracies = (props) => {
-  return <div>A conspiracy!</div>
-}
 
 const App = (props) =>
   <div id='app'>
