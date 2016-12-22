@@ -18,13 +18,8 @@ const initialState = {
 
 let store = redux.createStore(reducer, initialState)
 
-store.subscribe(function () {
-  var state = store.getState()
-  var view = render(state, store.dispatch)
-  morphdom(app, view)
-})
+store.subscribe(render)
 
-store.dispatch({type: 'INIT'})
 const dispatch = store.dispatch
 
 const main = document.querySelector('main')
@@ -40,4 +35,7 @@ function render () {
   const newView = h('div#app', {}, [
     Theories(state.conspiracies, dispatch)
   ])
+  morphdom(app, newView)
 }
+
+// store.dispatch({type: 'INIT'})
