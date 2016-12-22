@@ -22,16 +22,17 @@ const initialState = {
 
 let store = redux.createStore(reducer, initialState)
 
-store.subscribe(render)
-
-const dispatch = store.dispatch
-
-function render () {
-  const state = store.getState()
-  const newView = h('div#app', {}, [
-    Theories(state.conspiracies, dispatch)
-  ])
-  morphdom(app, newView)
-}
+store.subscribe(function () {
+  var state = store.getState()
+  var view = render(state, store.dispatch)
+  morphdom(app, view)
+})
 
 store.dispatch({type: 'INIT'})
+const dispatch = store.dispatch
+
+function render (state, dispatch) {
+    return h('div#app', {}, [
+    Theories(state.conspiracies, dispatch)
+  ])
+}

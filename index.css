@@ -1,9 +1,16 @@
-#app {
-  display: flex;
-}
-#app > div {
-  flex-grow: 1;
-}
-.product{
-  margin-bottom: 20px;
-}
+body {
+  text-align: center;
+  background-color: #a40f0f;
+  font-family: "Raleway", sans-serif; }
+
+.conDiv {
+  background-color: black;
+  color: white;
+  width: 60%;
+  margin: auto;
+  border-radius: 15px;
+  box-shadow: 0px 8px 71px -13px rgba(0, 0, 0, 0.75);
+  padding: 15px;
+  margin-bottom: 2px; }
+
+/*# sourceMappingURL=index.css.map */
