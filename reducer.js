@@ -9,16 +9,32 @@ module.exports = function reducer (state, action) {
       return newState
     case 'INCREMENT_VOTES':
       conspiracies.forEach((conspiracy, index) => {
-        if (conspiracy.id === payload) conspiracies[index].votes++
+        if(conspiracy.id === payload && !conspiracy.upVoted && !conspiracy.downVoted){
+          conspiracy.votes++
+          conspiracy.upVoted = true
+        } else if (conspiracy.id === payload && conspiracy.upVoted) {
+          conspiracy.votes--
+          conspiracy.upVoted = false
+        } else if (conspiracy.id === payload && conspiracy.downVoted){
+          conspiracy.votes += 2
+          conspiracy.upVoted = true
+          conspiracy.downVoted = false
+        }
       })
       return newState
     case 'DECREMENT_VOTES':
-      // find the target conspiracy to DECREMEN
-      // decrement it
-
-      
       conspiracies.forEach((conspiracy, index) => {
-        if (conspiracy.id === payload) conspiracies[index].votes--
+        if(conspiracy.id === payload && !conspiracy.upVoted && !conspiracy.downVoted){
+          conspiracy.votes--
+          conspiracy.downVoted = true
+        } else if (conspiracy.id === payload && conspiracy.downVoted) {
+          conspiracy.votes++
+          conspiracy.downVoted = false
+        } else if (conspiracy.id === payload && conspiracy.upVoted){
+          conspiracy.votes -= 2
+          conspiracy.upVoted = false
+          conspiracy.downVoted = true
+        }
       })
       return newState
     case 'ADD_CONSPIRACY':

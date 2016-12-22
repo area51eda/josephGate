@@ -10,7 +10,7 @@ module.exports = (conspiracies, dispatch) => {
 function showConspiracy (conspiracy, dispatch) {
   const { id } = conspiracy
 
-  return h('div', { id }, [
+  return h('div.conDiv', { id }, [
     h('h2', `"${conspiracy.description}"`),
     h('p', `-  ${conspiracy.author}`),
     h('button.upVote', {onclick: () => dispatch({type: 'INCREMENT_VOTES', payload: id})}, '+'),
