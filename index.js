@@ -5,10 +5,6 @@ const morphdom = require('morphdom')
 const reducer = require('./reducer')
 const Theories = require('./views/Theories')
 
-const main = document.querySelector('main')
-const app = document.createElement('div')
-main.appendChild(app)
-
 const initialState = {
   conspiracies: [
     {id: 1, description: 'joseph is a robot', votes: 0, author: 'mick66'},
@@ -31,8 +27,21 @@ store.subscribe(function () {
 store.dispatch({type: 'INIT'})
 const dispatch = store.dispatch
 
+<<<<<<< HEAD
 function render (state, dispatch) {
     return h('div#app', {}, [
+=======
+const main = document.querySelector('main')
+// const app = document.createElement('div')
+const app = h('div#app', {}, [
+  Theories(initialState.conspiracies, dispatch)
+])
+main.appendChild(app)
+
+
+function render () {
+  const state = store.getState()
+  const newView = h('div#app', {}, [
     Theories(state.conspiracies, dispatch)
   ])
 }
