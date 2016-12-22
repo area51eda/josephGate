@@ -27,10 +27,6 @@ store.subscribe(function () {
 store.dispatch({type: 'INIT'})
 const dispatch = store.dispatch
 
-<<<<<<< HEAD
-function render (state, dispatch) {
-    return h('div#app', {}, [
-=======
 const main = document.querySelector('main')
 // const app = document.createElement('div')
 const app = h('div#app', {}, [
